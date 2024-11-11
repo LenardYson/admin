@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        /* Inline CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #login-container {
+            width: 80%;
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #login-form label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        #login-form input {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #login-form button {
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #333;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #login-form button:hover {
+            background-color: #555;
+        }
+
+        #login-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Admin Login</h1>
+    <div id="login-container">
+        <form id="login-form" onsubmit="return validateLogin(event)">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="login-message"></p>
+    </div>
+
+    <script>
+        // Simulating a list of predefined users from the XML (hardcoded for simplicity)
+        const users = [
+            { username: 'admin', password: 'admin123' },
+            { username: 'superadmin', password: 'supersecret' },
+            { username: 'manager', password: 'manage2024' }
+        ];
+
+        // Function to validate login
+        function validateLogin(event) {
+            // Prevent form from submitting
+            event.preventDefault();
+
+            // Get the values from the form fields
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginMessage = document.getElementById('login-message');
+
+            // Search for the user in the predefined users array
+            const user = users.find(user => user.username === username && user.password === password);
+
+            // If the user is found, redirect to the dashboard
+            if (user) {
+                loginMessage.style.color = 'green';
+                loginMessage.textContent = 'Login successful! Redirecting...';
+                setTimeout(() => {
+                    window.location.href = 'index.html';  // Redirect to the admin dashboard page
+                }, 1000);
+            } else {
+                loginMessage.style.color = 'red';
+                loginMessage.textContent = 'Invalid username or password. Please try again.';
+            }
+        }
+    </script>
+</body>
+
+</html>

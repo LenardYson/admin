@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <!-- Predefined admin account -->
+    <user>
+        <username>admin</username>
+        <password>admin123</password>
+    </user>
+    
+    <!-- Additional admin accounts -->
+    <user>
+        <username>superadmin</username>
+        <password>supersecret</password>
+    </user>
+    
+    <user>
+        <username>manager</username>
+        <password>manage2024</password>
+    </user>
+</users>
